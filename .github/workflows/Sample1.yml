@@ -22,8 +22,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+     
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
@@ -32,3 +31,6 @@ jobs:
           repository: BorraVisalakshi/Github-actions-demo
           event-type: my-event
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          
+      - name: Run a one-line script
+        run: echo Hello, world!

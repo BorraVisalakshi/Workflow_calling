@@ -30,7 +30,10 @@ jobs:
           token: ${{ secrets.PAT }}
           repository: BorraVisalakshi/Workflow_calling
           event-type: my-event
-         # client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+     # client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+        id: event
+         
           
       - name: Run a one-line script
         run: echo Hello, world!
+        if: ${{steps.event.output == 'true'}}

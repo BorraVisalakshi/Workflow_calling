@@ -47,6 +47,6 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Main_Workflow
+          workflow: Repository Dispatch
           token: ${{ secrets.PAT }}
           inputs: '{ "hello":"${{ github.event.inputs.hi }}" }'

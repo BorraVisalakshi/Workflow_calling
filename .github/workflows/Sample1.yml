@@ -5,8 +5,14 @@ name: CI
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
+  workflow_dispatch:
+   inputs:
+    hi:
+     description: 'Say Hi'
+     required: true
+     default: ''
+     
+       
  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -37,3 +43,10 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
         if: ${{steps.event.output == 'true'}}
+        
+      - name: Invoke workflow without inputs
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Main_Workflow
+          token: ${{ secrets.PAT }}
+          inputs: '{ "hello":"${{ github.event.inputs.hi }}" }'

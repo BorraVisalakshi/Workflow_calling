@@ -4,6 +4,13 @@ name: Repository Dispatch
 on:
   repository_dispatch:
     types: [my-event]
+  workflow_dispatch:
+   inputs:
+    hello:
+      description: 'Send for scan'
+      required: true
+      default: ''
+    
 jobs:
   myEvent:
     runs-on: ubuntu-latest
